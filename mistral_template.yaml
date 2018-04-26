@@ -1,0 +1,17 @@
+---
+version: "2.0"
+
+interface_up:
+  type: direct
+
+  description: Interface up.
+
+  tasks:
+    rais_interface:
+      description: Rais the interface up
+      action: std.ssh
+      input:
+        host: 66.70.185.99
+        username: ubuntu
+        password: v1trag3!!
+        cmd: "/opt/mess_it_up/if_up.sh"

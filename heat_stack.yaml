@@ -1,0 +1,47 @@
+heat_template_version: 2013-05-23 
+
+description: |
+  The heat template is used to demo
+
+parameters:
+  image:
+    type: string
+    default: cirros-0.3.5-x86_64-disk
+  network:
+    type: string
+    default: public
+  flavor:
+    type: string
+    default: m1.nano
+  port1:
+    type: string
+    default: d4038285-b2af-4db2-9818-fe600d607868
+  port2:
+    type: string
+    default: 22521fcf-ccd5-45ba-a250-ef86ea6363c7
+
+resources:
+  vm_1:
+    type: OS::Nova::Server
+    properties:
+      image: { get_param: image }
+      flavor: { get_param: flavor }
+      networks:
+        - port: { get_param: port1 }
+
+  vm_2:
+    type: OS::Nova::Server
+    properties:
+      image: { get_param: image }
+      flavor: { get_param: flavor }
+      networks:
+        - port: { get_param: port2 }
+
+
+outputs:
+  single_console_type:
+    value: { get_attr: vm_1, console_urls, novnc }
+    description: console URL for the server (novnc in this case)
+  all_console_urls:
+    value: { get_attr: [vm_1, console_urls] }
+    description: all available console URLs for the server
