@@ -1,0 +1,4 @@
+zabbix:
+  - zabbix_host: br-ex
+    type: br-ex 
+    name: br-ex
