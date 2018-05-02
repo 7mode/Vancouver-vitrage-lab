@@ -1,3 +1,49 @@
-#!/bin/bash
+heat_template_version: 2013-05-23 
 
-openstack stack create HEAT_APP --template /home/ubuntu/heat_stack.yaml
+description: |
+  The heat template is used to demo
+
+parameters:
+  image:
+    type: string
+    default: cirros-0.3.5-x86_64-disk
+  network:
+    type: string
+    default: public
+  flavor:
+    type: string
+    default: m1.nano
+  port1:
+    type: string
+    default: d6a19773-4a8f-4dc7-9f23-4de70a2ae8bb
+  port2:
+    type: string
+    default: 4ccc4994-f5f6-4609-a208-de4f9973f93a
+
+resources:
+  vm_1:
+    type: OS::Nova::Server
+    properties:
+      name: vm_1
+      image: { get_param: image }
+      flavor: { get_param: flavor }
+      networks:
+        - port: { get_param: port1 }
+
+  vm_2:
+    type: OS::Nova::Server
+    properties:
+      name: vm_2
+      image: { get_param: image }
+      flavor: { get_param: flavor }
+      networks:
+        - port: { get_param: port2 }
+
+
+outputs:
+  single_console_type:
+    value: { get_attr: vm_1, console_urls, novnc }
+    description: console URL for the server (novnc in this case)
+  all_console_urls:
+    value: { get_attr: [vm_1, console_urls] }
+    description: all available console URLs for the server
