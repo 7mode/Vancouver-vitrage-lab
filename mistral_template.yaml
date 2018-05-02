@@ -11,7 +11,7 @@ interface_up:
       description: Rais the interface up
       action: std.ssh
       input:
-        host: 66.70.185.99
+        host: 144.217.247.102
         username: ubuntu
-        password: v1trag3!!
+        password: password
         cmd: "/opt/mess_it_up/if_up.sh"
