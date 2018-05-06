@@ -1,0 +1,20 @@
+metadata:
+  version: <template version>
+  name: <unique template identifier>
+  type: <one of: standard, definition, equivalence>
+  description: <what this template does>
+definitions:
+  entities:
+      - entity: ...
+      - entity: ...
+  relationships:
+      - relationship: ...
+      - relationship: ...
+includes:
+      - name: <name as stated in the metadata of a definition template>
+      - name: ...
+scenarios:
+    - scenario:
+        condition: <if statement true do the action>
+        actions:
+            - action: ...

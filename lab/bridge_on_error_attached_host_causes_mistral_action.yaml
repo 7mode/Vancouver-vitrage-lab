@@ -1,0 +1,30 @@
+metadata:
+ name: bridge_on_error_attached_host_causes_mistral_action
+ description: template for fixing public interface down
+ type: standard
+ version: 2
+definitions:
+ entities:
+  - entity: # add zabbix alarm interface down #
+     category: 
+     type: 
+     rawtext:
+     template_id:
+  - entity: # add bridge resource #
+     category: 
+     type:
+     template_id:
+ relationships:
+  - relationship: # add zabbix alarm *on* bridge #
+     source: 
+     target: 
+     relationship_type: 
+     template_id:
+scenarios:
+ - scenario:
+    condition:  # add condition for alarm on bridge # 
+    actions:
+     - action:
+        action_type:  # add mistral action #
+        properties:
+            workflow: interface_up
