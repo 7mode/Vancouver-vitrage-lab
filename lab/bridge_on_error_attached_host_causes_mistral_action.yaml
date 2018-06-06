@@ -5,26 +5,26 @@ metadata:
  version: 2
 definitions:
  entities:
-  - entity:  # add zabbix alarm interface down #
-     category: ALARM 
-     type: zabbix
-     rawtext: "Public interface down on {HOST.NAME}"
-     template_id: zabbix_alarm
+  - entity: # add zabbix alarm interface down #
+     category: 
+     type: 
+     rawtext:
+     template_id:
   - entity: # add bridge resource #
-     category: RESOURCE
-     type: br-ex
-     template_id: bridge
+     category: 
+     type:
+     template_id:
  relationships:
   - relationship: # add zabbix alarm *on* bridge #
-     source: zabbix_alarm
-     target: bridge
-     relationship_type: on
-     template_id: alarm_on_bridge
+     source: 
+     target: 
+     relationship_type: 
+     template_id:
 scenarios:
  - scenario:
-    condition: alarm_on_bridge # add condition for alarm on bridge # 
+    condition:  # add condition for alarm on bridge # 
     actions:
      - action:
-        action_type: execute_mistral # add mistral action #
+        action_type:  # add mistral action #
         properties:
             workflow: interface_up

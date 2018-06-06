@@ -41,27 +41,27 @@ definitions:
      template_id : alarm_on_heat_stack
 scenarios:
  - scenario:
-    condition: heat_contains_instance and alarm_on_instance  
+    condition: # add condition for raise alarm on heat and set error state on heat #  
     actions:
      - action:
         action_type: raise_alarm
         action_target:
-         target: heat_stack # add heat target # 
+         target:  # add heat target # 
         properties:
-         alarm_name:  Heat stack error # add alarm name # 
+         alarm_name:  # add alarm name # 
          severity: critical
      - action:
         action_type: set_state
         action_target:
-         target:  heat_stack # add heat target # 
+         target:  # add heat target # 
         properties:
          state: ERROR
  - scenario:
-    condition: heat_contains_instance and alarm_on_instance and alarm_on_heat_stack  # add condition for adding a casual relationship #
+    condition:  # add condition for adding a casual relationship #
     actions:
      - action:
         action_type: add_causal_relationship
         action_target:
-         source: instance_alarm  # add source for instance alarm # 
-         target:  heat_alarm # add target for heat alarm # 
+         source:  # add source for instance alarm # 
+         target:  # add target for heat alarm # 
 
